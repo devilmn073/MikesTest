@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Serverless Survey Handler.
+
+Resources:
+
+  Products:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: survey.handler
+      Runtime: nodejs6.10
+      Events:
+        ListProducts:
+          Type: Api
+          Properties:
+            Path: /survey
+            Method: get
+        CreateProduct:
+          Type: Api
+          Properties:
+            Path: /survey
+            Method: post
+        Product:
+          Type: Api
+          Properties:
+            Path: /survey/{survey}
+            Method: any
+      

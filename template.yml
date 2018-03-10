@@ -1,3 +1,4 @@
+
 AWSTemplateFormatVersion: 2010-09-09
 Transform:
 - AWS::Serverless-2016-10-31
@@ -9,11 +10,11 @@ Parameters:
     Description: AWS CodeStar projectID used to associate new resources to team members
 
 Resources:
-  GetHelloWorld:
+  disruptivediagn:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.get
-      Runtime: nodejs4.3
+      Runtime: nodejs6.1.0
       Role:
         Fn::ImportValue:
           !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]

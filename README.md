@@ -1,55 +1,58 @@
-Welcome to the AWS CodeStar sample web application
-==================================================
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-This sample code helps get you started with a simple Node.js web service deployed by AWS CloudFormation to AWS Lambda and Amazon API Gateway.
-
-What's Here
------------
-
-This sample includes:
-
-* README.md - this file
-* buildspec.yml - this file is used by AWS CodeBuild to package your
-  application for deployment to AWS Lambda
-* index.js - this file contains the sample Node.js code for the web service
-* template.yml - this file contains the AWS Serverless Application Model (AWS SAM) used
-  by AWS CloudFormation to deploy your application to AWS Lambda and Amazon API
-  Gateway.
-* tests/ - this directory contains unit tests for your application
+Below you will find basic information about the S-Curve Locator workflow<br>
 
 
-What Do I Do Next?
-------------------
+# S-Curve Locator Diagnostic
+The S-Curve Locator diagnostic is a survey with 22 questions that use a Likert scale to rate user's answers.
+The answers range from "Strongly Disagree" to "Strongly Agree" and are scored on a numeric scale fomr 1-5.
+The individual answers are tallied at the end of the survey to create the S-Curve Locator score. Scores are categorized 
+as low (20-49), medium or the "Sweet Spot"(50-75), and high (76-100). At the end of the survey, users see their 
+total S-Curve Locator plotted on a graphic and some content describing the meaning of their score with a list of resources
+they can use, the questions of the survey with their responses, and a thank you page from Whitney.
 
-If you have checked out a local copy of your repository you can start making
-changes to the sample code.  We suggest making a small change to index.js first,
-so you can see how changes pushed to your project's repository are automatically
-picked up by your project pipeline and deployed to AWS Lambda and Amazon API Gateway.
-(You can watch the pipeline progress on your AWS CodeStar project dashboard.)
-Once you've seen how that works, start developing your own code, and have fun!
 
-To run your tests locally, go to the root directory of the 
-sample code and run the `npm test` command, which
-AWS CodeBuild also runs through your `buildspec.yml` file.
- 
-To test your new code during the release process, modify the existing tests or 
-add tests to the tests directory. AWS CodeBuild will run the tests during the 
-build stage of your project pipeline. You can find the test results
-in the AWS CodeBuild console.
- 
-Learn more about AWS CodeBuild and how it builds and tests your application here:
-https://docs.aws.amazon.com/codebuild/latest/userguide/concepts.html
+# S-Curve Locator Users
+There are two types of S-Curve Locator users: Managers/Leaders and Employees
 
-Learn more about AWS Serverless Application Model (AWS SAM) and how it works here:
-https://github.com/awslabs/serverless-application-model/blob/master/HOWTO.md
+#### Managers/Leaders can setup the S-Curve Locator for their employees by adding the following:
+1. Entering the company name
+2. Setting the start date for the survey
+3. Setting the end date for the survey
 
-AWS Lambda Developer Guide:
-http://docs.aws.amazon.com/lambda/latest/dg/deploying-lambda-apps.html
+The S-Curve Locator diagnostic will generate a unique ID for the company and display this back to the user with the start 
+and end dates so that this information can be shared with employees
 
-Learn more about AWS CodeStar by reading the user guide, and post questions and
-comments about AWS CodeStar on our forum.
+#### Employees can do the following:
+1. Entering the company name and UID for their company
+2. Take the survey
+3. See the results in the web view
+4. Generate a PDF of their results and download it
 
-AWS CodeStar User Guide:
-http://docs.aws.amazon.com/codestar/latest/userguide/welcome.html
 
-AWS CodeStar Forum: https://forums.aws.amazon.com/forum.jspa?forumID=248
+The S-Curve Locator diagnostic will generate a unique ID for each employee and provide this and their company's UID in the generated report
+
+# S-Curve Scoring
+Answers are scored on a numeric range from 1-5. Ordering of the scoring can vary based on the question. For example, 
+in some questions, "Strongly Disagree" will be scored a '5' while in other questions it will be scored as a "1".
+Individual answers are tallied at the end of the survey to create the S-Curve Locator score. Scores are categorized 
+as low (20-49), medium or the "Sweet Spot"(50-75), and high (76-100).
+
+# S-Curve Results
+S-Curve results include the following:
+1. Employee UID and company UID
+2. Date the survey was taken
+3. S-Curve score result with the S-Curve graphic, content associated with their score, the questions with their recorded responses, and a Thank You page. 
+
+# S-Curve Content and User Experience
+Most of the S-Curve content is static. This includes:
+1. The questions and answer options
+2. The content associated with low range, medium range, and high range scores including the S-Curve graphic
+3. The Thank You page
+
+Questions are presented individually in a "slider" like view with radio buttons to select answer options.  Answers are tallied
+and results are presented at the end of the survey.  Historical user feedback has shown that users prefer to see a progress bar indicating percent done. 
+
+All answers are required and users are not allowed to progress to the next question without providing an answer. Error messages 
+must be presented indicating that a questions has not been answered.
+
